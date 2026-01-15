@@ -13,9 +13,10 @@
         <header class="header">
             <h1>Jogo da Forca</h1>
             <div class="category-wrapper">
+                <!-- <div id="display-Category" class="word-category"></div> -->
                 <label for="typeItems">Categoria:</label>
                 <select id="typeItems">
-                    <option value="" disabled selected>Escolha um modo</option>
+                    <option value="dsValue" disabled selected>Escolha um modo</option>
                     <option value="Frutas">Frutas</option>
                     <option value="Cidades">Cidades</option>
                     <option value="Paises">Países</option>
@@ -25,10 +26,11 @@
 
         <section class="game-area">
             <div class="visual-area">
-                <img id="imagem-" src="./assets/img/1.png" alt="Imagem contínua de uma forca">
+                <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem contínua de uma forca">
             </div>
 
             <div class="word-area">
+                <div id="Alerts"></div>
                 <div id="display" class="word-display"></div>
 
                 <div class="input-group">
@@ -49,7 +51,8 @@
         </footer>
     </main>
 
-    <script src="./assets/js/dataModes.js"></script>
+    <!-- <script src="./assets/js/dataModes.js"></script> -->
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>

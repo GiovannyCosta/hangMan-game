@@ -1,85 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-
+/* Configurações Gerais - Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    height: 100vh;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f6f6ef;
+    min-height: 100vh;
+    color: #333;
 }
 
 .container {
-    text-align: center;
-    width: 100%;
-    padding: 15px;
-}
-
-input {
-    height: 40px;
-    margin-top: 15px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
     text-align: center;
 }
 
-input::placeholder {
-    transition: all 250ms;
-    color: #000;
-    font-size: 15px;
-
+/* Cabeçalho */
+.header h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: #2c3e50;
 }
 
-input:focus::placeholder {
-    transition: 250ms;
-    color: transparent;
+.category-wrapper {
+    margin-bottom: 2rem;
 }
 
-input[type="button"] {
-    text-align: center;
-    padding: 10px;
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 
-.game__chutes {
+/* Ajuste para imagens grandes e centralização */
+.visual-area {
     display: flex;
-    align-items: center;
-    flex-direction: column;
     justify-content: center;
-    margin-top: 20px;
-
-    & #chutes {
-        margin-top: 5px;
-        color: #4CAF50;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    & #mensagem {
-        font-size: 25px;
-        margin-top: 10px;
-        display: none;
-    }
+    align-items: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    overflow: hidden;
 }
 
-#btnRecomecar {
-    width: 120px;
+.visual-area img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Palavra e Input */
+.word-display {
+    font-size: 2.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.8rem;
+    margin-bottom: 2rem;
+    min-height: 3rem;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+#enterLetter {
+    width: 50px;
     height: 50px;
-    font-size: 20px;
     text-align: center;
-    background-color: #4CAF50;
-    border: 1px solid #2e6b30;
+    font-size: 1.5rem;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+button {
+    padding: 0 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Status e Chutes */
+.game-status {
+    border-top: 2px solid #eee;
+    padding-top: 1.5rem;
+}
+
+.history h3 {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+#chutes {
+    font-weight: bold;
+    color: #e74c3c;
+    letter-spacing: 3px;
+}
+
+.message-display {
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Classe utilitária para esconder o botão de recomeçar */
+.hidden {
     display: none;
 }
 
+#btnRecomecar {
+    background-color: #2ecc71;
+    padding: 10px 20px;
+    width: 100%;
+}
+
 #btnRecomecar:hover {
-    background-color: #2e6b30;
+    background-color: #27ae60;
+}
+
+#display {
+    font-size: 2rem;
+    white-space: nowrap;
+}
+
+#word-alerts {
+    position: fixed;
+    height: 30px;
+    color: #ffa629;
 }
