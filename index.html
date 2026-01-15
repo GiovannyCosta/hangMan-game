@@ -5,35 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Jogo da forca</title>
+    <title>Jogo da Forca</title>
 </head>
 
 <body>
-    <div class="container">
-        <!-- TOP -->
-        <section class="header">
-            <h2>jogo da forca</h2>
-            <select name="" id="typeItems">
-                <option value="Frutas">Selecionar modos</option>
-                <option value="Frutas">Frutas</option>
-            </select>
-            <img id="imagem" src="./assets/img/1.svg" alt="Imagem contínua de uma forca">
+    <main class="container">
+        <header class="header">
+            <h1>Jogo da Forca</h1>
+            <div class="category-wrapper">
+                <label for="typeItems">Categoria:</label>
+                <select id="typeItems">
+                    <option value="" disabled selected>Escolha um modo</option>
+                    <option value="Frutas">Frutas</option>
+                    <option value="Cidades">Cidades</option>
+                    <option value="Paises">Países</option>
+                </select>
+            </div>
+        </header>
+
+        <section class="game-area">
+            <div class="visual-area">
+                <img id="imagem-" src="./assets/img/1.png" alt="Imagem contínua de uma forca">
+            </div>
+
+            <div class="word-area">
+                <div id="display" class="word-display"></div>
+
+                <div class="input-group">
+                    <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
+                    <button id="btnChutar">Chutar</button>
+                </div>
+            </div>
         </section>
-        <!-- MEIO -->
-        <div>
-            <p id="display"></p>
-            <input type="text" name="" id="enterLetter" placeholder="chute uma letra" maxlength="1">
-            <input type="button" value="Chutar" id="btnChutar">
-        </div>
-        <!-- MIDDLE -->
-        <!-- BOTTOM -->
-        <div class="game__chutes">
-            <h2>Letras chutadas</h2>
-            <p id="chutes"><!-- P, T, G --></p>
-            <p id="mensagem"><!-- Parabéns! você ganhou --></p>
-            <input type="button" value="recomeçar" id="btnRecomecar">
-        </div>
-    </div>
+
+        <footer class="game-status">
+            <div class="history">
+                <h3>Letras chutadas:</h3>
+                <p id="chutes"></p>
+            </div>
+
+            <p id="mensagem" class="message-display"></p>
+            <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
+        </footer>
+    </main>
+
+    <script src="./assets/js/dataModes.js"></script>
 </body>
 
 </html>
