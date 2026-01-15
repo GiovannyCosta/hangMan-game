@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Jogo da forca</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- TOP -->
+        <section class="header">
+            <h2>jogo da forca</h2>
+            <select name="" id="typeItems">
+                <option value="Frutas">Selecionar modos</option>
+                <option value="Frutas">Frutas</option>
+            </select>
+            <img id="imagem" src="./assets/img/1.svg" alt="Imagem contínua de uma forca">
+        </section>
+        <!-- MEIO -->
+        <div>
+            <p id="display"></p>
+            <input type="text" name="" id="enterLetter" placeholder="chute uma letra" maxlength="1">
+            <input type="button" value="Chutar" id="btnChutar">
+        </div>
+        <!-- MIDDLE -->
+        <!-- BOTTOM -->
+        <div class="game__chutes">
+            <h2>Letras chutadas</h2>
+            <p id="chutes"><!-- P, T, G --></p>
+            <p id="mensagem"><!-- Parabéns! você ganhou --></p>
+            <input type="button" value="recomeçar" id="btnRecomecar">
+        </div>
+    </div>
+</body>
+
+</html>

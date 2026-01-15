@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f6ef;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+}
+
+input {
+    height: 40px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+input::placeholder {
+    transition: all 250ms;
+    color: #000;
+    font-size: 15px;
+
+}
+
+input:focus::placeholder {
+    transition: 250ms;
+    color: transparent;
+}
+
+input[type="button"] {
+    text-align: center;
+    padding: 10px;
+}
+
+.game__chutes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+
+    & #chutes {
+        margin-top: 5px;
+        color: #4CAF50;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    & #mensagem {
+        font-size: 25px;
+        margin-top: 10px;
+        display: none;
+    }
+}
+
+#btnRecomecar {
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #4CAF50;
+    border: 1px solid #2e6b30;
+    cursor: pointer;
+    display: none;
+}
+
+#btnRecomecar:hover {
+    background-color: #2e6b30;
+}
