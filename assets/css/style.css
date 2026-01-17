@@ -21,7 +21,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 500px;
+    max-width: 960px;
     text-align: center;
 }
 
@@ -156,8 +156,11 @@ button:hover {
 }
 
 #display {
-    font-size: 2rem;
-    white-space: nowrap;
+    font-size: min(2rem, 8vw);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 #word-alerts {

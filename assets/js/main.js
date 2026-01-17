@@ -83,7 +83,7 @@ btnKick.addEventListener("click", e => {
       if (randonItem[i] === letterValue) underscoreItem[i] = letterValue;
     }
   } else {
-    erros++; // Apenas incrementa erros
+    erros++;
   }
 
   enterLetter.value = "";
