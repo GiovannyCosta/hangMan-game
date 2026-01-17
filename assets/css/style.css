@@ -44,7 +44,7 @@ select {
     outline: none;
 }
 
-body:has(#btnChutar:hover) #typeItems:invalid {
+.container:has(#btnChutar:hover, #enterLetter:hover) #typeItems:invalid {
 
     border: 1px solid #c20426;
     outline: none;
@@ -109,6 +109,13 @@ button:hover {
     background-color: #2980b9;
 }
 
+.container:has(#typeItems:invalid) #btnChutar,
+.container:has(#typeItems:invalid) #enterLetter {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 /* Status e Chutes */
 .game-status {
     border-top: 2px solid #eee;
@@ -140,7 +147,7 @@ button:hover {
 
 #btnRecomecar {
     background-color: #2ecc71;
-    padding: 10px 20px;
+    padding: 20px 20px;
     width: 100%;
 }
 
@@ -157,4 +164,12 @@ button:hover {
     position: fixed;
     height: 30px;
     color: #ffa629;
+}
+
+#Alerts {
+    min-height: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #e67e22;
+    font-weight: bold;
+    display: block;
 }

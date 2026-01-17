@@ -13,10 +13,9 @@
         <header class="header">
             <h1>Jogo da Forca</h1>
             <div class="category-wrapper">
-                <!-- <div id="display-Category" class="word-category"></div> -->
                 <label for="typeItems">Categoria:</label>
-                <select id="typeItems">
-                    <option value="dsValue" disabled selected>Escolha um modo</option>
+                <select id="typeItems" required>
+                    <option value="" disabled selected>Escolha um modo</option>
                     <option value="Frutas">Frutas</option>
                     <option value="Cidades">Cidades</option>
                     <option value="Paises">Países</option>
@@ -36,6 +35,8 @@
                 <div class="input-group">
                     <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
                     <button id="btnChutar">Chutar</button>
+                    <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
+
                 </div>
             </div>
         </section>
@@ -45,9 +46,6 @@
                 <h3>Letras chutadas:</h3>
                 <p id="chutes"></p>
             </div>
-
-            <p id="mensagem" class="message-display"></p>
-            <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
         </footer>
     </main>
 
