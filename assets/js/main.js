@@ -16,9 +16,13 @@ const btnRetry = document.getElementById("btnRecomecar");
 const areaJogo = document.getElementById("area-jogo");
 const btnIniciar = document.getElementById("startGameBtn");
 const menuInicial = document.getElementById("menu-inicial");
+const categoriaRadios = document.getElementById("categoria-selecionada");
+
+// Botão de voltar ao menu
+const btnReturn = document.getElementById("btnReturn");
 
 // Variáveis de controle
-let letrasChutes, erros, randonItem, underscoreItem;
+let letrasChutes, erros, randonItem, underscoreItem, selected;
 const LIMITE_ERROS = 8;
 
 function initGame(categoryName) {
@@ -26,7 +30,7 @@ function initGame(categoryName) {
   erros = 0;
 
   // Corrigido: Se categoryName não existir, busca o valor do rádio marcado
-  const selected =
+  selected =
     categoryName ||
     document.querySelector('input[name="categoria"]:checked')?.value;
   const categoryList = listas[selected];
@@ -59,6 +63,7 @@ function initGame(categoryName) {
 }
 
 function updateScreen() {
+  categoriaRadios.innerText = selected;
   display.innerText = underscoreItem.join(" ");
   displayKicks.innerText = letrasChutes.join(", ");
   imgForca.src = `./assets/img/game-level-${erros}.png`;
@@ -125,6 +130,15 @@ btnIniciar.addEventListener("click", () => {
 
 // Botão Recomeçar: Volta para o menu
 btnRetry.addEventListener("click", () => {
+  areaJogo.classList.add("hidden");
+  menuInicial.classList.remove("hidden");
+  alerts.innerText = "";
+  document
+    .querySelectorAll('input[name="categoria"]')
+    .forEach(r => (r.checked = false));
+});
+
+btnReturn.addEventListener("click", () => {
   areaJogo.classList.add("hidden");
   menuInicial.classList.remove("hidden");
   alerts.innerText = "";

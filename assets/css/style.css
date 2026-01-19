@@ -1,254 +1,308 @@
-/* Configurações Gerais - Reset */
+/* VARIÁVEIS DE COR & CONFIGURAÇÕES GERAIS */
+:root {
+    --cor-verde: #27ae60;
+    --cor-azul: #3498db;
+    --cor-azul-escuro: #2980b9;
+    --cor-amarelo: #f1c40f;
+    --cor-laranja: #e67e22;
+    --cor-vermelho: #e74c3c;
+    --cor-fundo: #ecf0f1;
+    --cor-texto: #2c3e50;
+    --sombra-profunda: 0 8px 0px rgba(0, 0, 0, 0.15);
+    --borda-padrao: 3px solid transparent;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 body {
-    background-color: #f0f2f5;
+    background: linear-gradient(135deg, var(--cor-azul), var(--cor-verde));
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #333;
+    color: var(--cor-texto);
+    padding: 20px;
 }
 
 .container {
+    position: relative;
+    /* Importante para posicionar elementos absolutos (como btn voltar) dentro do card */
     background-color: #fff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 960px;
+    padding: 4rem;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 900px;
     text-align: center;
+    border: 4px solid #fff;
 }
 
-/* Cabeçalho */
-.header h1 {
+/* TIPOGRAFIA */
+h1, h2 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--cor-azul-escuro);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-}
-
-.category-wrapper {
-    margin-bottom: 2rem;
-}
-
-select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-.container:has(#btnChutar:hover, #enterLetter:hover) #typeItems:invalid {
-
-    border: 1px solid #c20426;
-    outline: none;
-}
-
-/* Ajuste para imagens grandes e centralização */
-.visual-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 1.5rem;
-    width: 100%;
-    overflow: hidden;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* MENU INICIAL */
+.menu-option {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.menu-option p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--cor-texto);
+    border: none;
+}
+
+/* Input invisível para manter funcionalidade sem mostrar a bolinha nativa */
+.menu-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.menu-option label {
+    background-color: var(--cor-azul);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 0px var(--cor-azul-escuro);
+    border: var(--borda-padrao);
+    animation: fadeUp 0.5s ease backwards;
+}
+
+/* Delay escalonado para efeito cascata */
+.menu-option label:nth-of-type(1) {
+    animation-delay: 0.1s;
+}
+
+.menu-option label:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.menu-option label:nth-of-type(3) {
+    animation-delay: 0.3s;
+}
+
+.menu-option label:hover {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0px var(--cor-azul-escuro);
+}
+
+.menu-option label:active {
+    transform: translateY(6px);
+    box-shadow: 0 0px 0px var(--cor-azul-escuro);
+}
+
+.menu-option label:has(input:checked) {
+    background-color: var(--cor-amarelo);
+    color: var(--cor-texto);
+    box-shadow: 0 6px 0px var(--cor-laranja);
+    border-color: var(--cor-laranja);
+    transform: scale(1.02);
+}
+
+/* BOTÕES GERAIS (Iniciar/Recomeçar) */
+/* Nota: btnChutar separado abaixo para ajuste de alinhamento */
+button#startGameBtn,
+button#btnRecomecar {
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: var(--cor-verde);
+    color: white;
+    box-shadow: 0 8px 0px #219653;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0px #219653;
+}
+
+button:active:not(:disabled) {
+    transform: translateY(8px);
+    box-shadow: none;
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+    box-shadow: 0 8px 0px #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ÁREA DO JOGO */
 .visual-area img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    display: block;
-    border-radius: 10px;
+    height: 320px;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s;
 }
 
-/* Palavra e Input */
-.word-display {
-    font-size: 2.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 0.8rem;
-    margin-bottom: 2rem;
-    min-height: 3rem;
+#display {
+    font-size: min(3.5rem, 10vw);
+    /* Adapta fonte para telas menores */
+    font-family: 'Nunito', monospace;
+    font-weight: 900;
+    color: var(--cor-texto);
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .input-group {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 2rem;
+    align-items: center;
 }
 
 #enterLetter {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+    font-weight: 900;
     text-align: center;
-    font-size: 2rem;
-    border: 2px solid #3498db;
-    border-radius: 8px;
+    border: 4px solid var(--cor-azul);
+    border-radius: 15px;
+    background-color: #f8f9fa;
+    color: var(--cor-azul-escuro);
+    outline: none;
     text-transform: uppercase;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    animation: fadeUp 0.5s ease backwards;
 }
 
-button {
-    padding: 0 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
+#enterLetter:focus {
+    border-color: var(--cor-amarelo);
+    transform: scale(1.05);
+}
+
+/* BOTÃO CHUTAR (Específico) */
+button#btnChutar {
+    animation: fadeUp 0.5s ease backwards;
+    width: 100%;
+    height: 80px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.2s;
+    background-color: var(--cor-verde);
+    color: white;
+    box-shadow: 0 8px 0px #219653;
+    border: none;
+    margin-bottom: 8px;
+    border-radius: 15px;
+}
+
+/* ALERTAS */
+#Alerts {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
-    transition: background 0.3s;
+    color: var(--cor-laranja);
+    background-color: #fff3cd;
+    border-radius: 8px;
+    transition: opacity 0.3s;
 }
 
-button:hover {
-    background-color: #2980b9;
+/* Mantém o espaço reservado mesmo sem texto para evitar pulo na tela */
+#Alerts:empty {
+    visibility: hidden;
+    display: flex !important;
+    background-color: transparent;
+    border: none;
 }
 
-.container:has(#typeItems:invalid) #btnChutar,
-.container:has(#typeItems:invalid) #enterLetter {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* Status e Chutes */
-.game-status {
-    border-top: 2px solid #eee;
-    padding-top: 1.5rem;
-}
-
-.history h3 {
-    font-size: 0.9rem;
+.game-status h3 {
+    font-size: 1.2rem;
     color: #7f8c8d;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 #chutes {
-    font-weight: bold;
-    color: #e74c3c;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--cor-vermelho);
     letter-spacing: 3px;
 }
 
-.message-display {
-    margin: 1rem 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Classe utilitária para esconder itens */
+/* UTILITÁRIOS E ANIMAÇÕES */
 .hidden {
     display: none !important;
 }
 
-#btnRecomecar {
-    background-color: #2ecc71;
-    padding: 20px 20px;
-    width: 100%;
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-#btnRecomecar:hover {
-    background-color: #27ae60;
+@keyframes fadeUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-#display {
-    font-size: min(2rem, 8vw);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-}
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
 
-#word-alerts {
-    position: fixed;
-    height: 30px;
-    color: #ffa629;
-}
+    25% {
+        transform: translateX(-5px);
+    }
 
-#Alerts {
-    min-height: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #e67e22;
-    font-weight: bold;
-    display: block;
-}
-
-
-/* Teste de funcionalidade nova: Menu game option*/
-
-.menu-option {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-}
-
-.menu-option p {
-    font-weight: bold;
-    border-bottom: 1px solid #000;
-    padding: 4px;
-}
-
-.menu-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.menu-option label {
-    background-color: #3498db;
-
-    margin: 8px;
-    width: 200px;
-    padding: 20px 20px;
-    border-radius: 8px;
-}
-
-.menu-option label:hover {
-    background-color: #2980b9;
-}
-
-
-.menu-option label:has(input:checked) {
-    background-color: #ffa629;
-    border: 2px solid #fff;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.menu-option #startGameBtn {
-    padding: 20px 20px;
-    width: 90%;
-    margin: 20px;
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
-    cursor: not-allowed;
-    background-color: #95a5a6;
-    /* Cor cinza (desativado) */
-    opacity: 0.5;
-    transition: 0.3s;
-}
-
-.menu-option:has(input:checked) #startGameBtn {
-    background-color: #f1c40f;
-    /* Cor amarela (ativo) */
-    color: #2c3e50;
-    opacity: 1;
-    cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    border: 2px solid #fff;
-
-}
-
-.menu-option:has(input:checked) #startGameBtn:hover {
-    background-color: #ffa629;
-    transform: translateY(-2px);
+    75% {
+        transform: translateX(5px);
+    }
 }

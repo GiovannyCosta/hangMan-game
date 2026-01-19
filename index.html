@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     <title>Jogo da Forca</title>
 </head>
 
@@ -29,6 +33,15 @@
 
         <!-- Area do Jogo -->
         <section id="area-jogo" class="hidden">
+
+            <!-- TO DO: CRIAR ESTILO DO BOTÃO VOLTAR -->
+            <div class="menu-close-game">
+                <p>Categoria: <span id="categoria-selecionada"></span></p>
+                <div class="close-game-button">
+                    <button id="btnReturn"><i class="fa-solid fa-x close-icon"></i></button>
+                    <label for="btnReturn" class="label--btnReturn">VOLTAR</label>
+                </div>
+            </div>
             <section class="game-area">
                 <div class="visual-area">
                     <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem contínua de uma forca">
