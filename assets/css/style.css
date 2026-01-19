@@ -140,9 +140,9 @@ button:hover {
     font-size: 1.2rem;
 }
 
-/* Classe utilitária para esconder o botão de recomeçar */
+/* Classe utilitária para esconder itens */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #btnRecomecar {
@@ -175,4 +175,80 @@ button:hover {
     color: #e67e22;
     font-weight: bold;
     display: block;
+}
+
+
+/* Teste de funcionalidade nova: Menu game option*/
+
+.menu-option {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.menu-option p {
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding: 4px;
+}
+
+.menu-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.menu-option label {
+    background-color: #3498db;
+
+    margin: 8px;
+    width: 200px;
+    padding: 20px 20px;
+    border-radius: 8px;
+}
+
+.menu-option label:hover {
+    background-color: #2980b9;
+}
+
+
+.menu-option label:has(input:checked) {
+    background-color: #ffa629;
+    border: 2px solid #fff;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-option #startGameBtn {
+    padding: 20px 20px;
+    width: 90%;
+    margin: 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: not-allowed;
+    background-color: #95a5a6;
+    /* Cor cinza (desativado) */
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.menu-option:has(input:checked) #startGameBtn {
+    background-color: #f1c40f;
+    /* Cor amarela (ativo) */
+    color: #2c3e50;
+    opacity: 1;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+
+}
+
+.menu-option:has(input:checked) #startGameBtn:hover {
+    background-color: #ffa629;
+    transform: translateY(-2px);
 }

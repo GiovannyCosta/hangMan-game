@@ -10,43 +10,50 @@
 
 <body>
     <main class="container">
-        <header class="header">
-            <h1>Jogo da Forca</h1>
-            <div class="category-wrapper">
-                <label for="typeItems">Categoria:</label>
-                <select id="typeItems" required>
-                    <option value="" disabled selected>Escolha um modo</option>
-                    <option value="Frutas">Frutas</option>
-                    <option value="Cidades">Cidades</option>
-                    <option value="Paises">Países</option>
-                </select>
-            </div>
-        </header>
+        <!-- Menu Inicial -->
+        <section id="menu-inicial" class="menu-option">
+            <p>Selecione uma categoria</p>
+            <label for="id-frutas">
+                <input type="radio" name="categoria" id="id-frutas" value="Frutas"> Frutas
+            </label>
+            <label for="id-cidades">
+                <input type="radio" name="categoria" id="id-cidades" value="Cidades"> Cidades
+            </label>
+            <label for="id-paises">
+                <input type="radio" name="categoria" id="id-paises" value="Paises"> Países
+            </label>
 
-        <section class="game-area">
-            <div class="visual-area">
-                <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem contínua de uma forca">
-            </div>
-
-            <div class="word-area">
-                <div id="Alerts"></div>
-                <div id="display" class="word-display"></div>
-
-                <div class="input-group">
-                    <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
-                    <button id="btnChutar">Chutar</button>
-                    <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
-
-                </div>
-            </div>
+            <button id="startGameBtn">Iniciar Jogo</button>
         </section>
+        <!-- End - Menu Inicial -->
 
-        <footer class="game-status">
-            <div class="history">
-                <h3>Letras chutadas:</h3>
-                <p id="chutes"></p>
-            </div>
-        </footer>
+        <!-- Area do Jogo -->
+        <section id="area-jogo" class="hidden">
+            <section class="game-area">
+                <div class="visual-area">
+                    <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem contínua de uma forca">
+                </div>
+
+                <div class="word-area">
+                    <div id="Alerts"></div>
+                    <div id="display" class="word-display"></div>
+
+                    <div class="input-group">
+                        <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
+                        <button id="btnChutar">Chutar</button>
+                        <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
+
+                    </div>
+                </div>
+                <footer class="game-status">
+                    <div class="history">
+                        <h3>Letras chutadas:</h3>
+                        <p id="chutes"></p>
+                    </div>
+                </footer>
+            </section>
+        </section>
+        <!-- End - Area do Jogo -->
     </main>
 
     <!-- <script src="./assets/js/dataModes.js"></script> -->
