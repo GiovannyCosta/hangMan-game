@@ -161,7 +161,7 @@ button:disabled {
 
 /* ÁREA DO JOGO */
 .visual-area img {
-    height: 320px;
+    max-height: 320px;
     filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s;
 }
@@ -243,7 +243,7 @@ button#btnChutar {
     transition: opacity 0.3s;
 }
 
-/* Mantém o espaço reservado mesmo sem texto para evitar pulo na tela */
+/* Mantém o espaço reservado */
 #Alerts:empty {
     visibility: hidden;
     display: flex !important;
@@ -264,10 +264,93 @@ button#btnChutar {
     letter-spacing: 3px;
 }
 
+
+
 /* UTILITÁRIOS E ANIMAÇÕES */
 .hidden {
     display: none !important;
 }
+
+/* Botão fechar jogo (voltar ao menu) */
+.menu-close-game {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-game-button {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    /* Alinha o botão à direita e o label à esquerda */
+    position: relative;
+    width: fit-content;
+}
+
+#btnCloseGame {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 2;
+    background-color: var(--cor-vermelho);
+}
+
+.close-game-button #btnCloseGame:hover {
+    transform: translateY(1px);
+    box-shadow: none;
+    background-color: #333;
+}
+
+.label--btn-close-game {
+    background-color: var(--cor-texto);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-right: 12px;
+    /* Espaço entre o texto e o botão */
+}
+
+.close-game-button:has(#btnCloseGame:hover) .label--btn-close-game {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Estado inicial do label */
+.label--btn-close-game {
+    background-color: var(--cor-texto);
+    /* Fundo escuro */
+    color: white;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+    /* Garante que o mouse ignore o label */
+}
+
+.menu-close-game p {
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--cor-texto);
+    border-radius: 8px;
+    transition: opacity 0.3s;
+    font-size: 1.1rem;
+}
+
+.menu-close-game span {
+    margin: 0 5px;
+    color: var(--cor-vermelho) !important;
+}
+
+
 
 @keyframes popIn {
     0% {

@@ -19,7 +19,7 @@ const menuInicial = document.getElementById("menu-inicial");
 const categoriaRadios = document.getElementById("categoria-selecionada");
 
 // Botão de voltar ao menu
-const btnReturn = document.getElementById("btnReturn");
+const btnReturn = document.getElementById("btnCloseGame");
 
 // Variáveis de controle
 let letrasChutes, erros, randonItem, underscoreItem, selected;
@@ -27,6 +27,7 @@ const LIMITE_ERROS = 8;
 
 function initGame(categoryName) {
   letrasChutes = [];
+
   erros = 0;
 
   // Corrigido: Se categoryName não existir, busca o valor do rádio marcado
@@ -65,11 +66,17 @@ function initGame(categoryName) {
 function updateScreen() {
   categoriaRadios.innerText = selected;
   display.innerText = underscoreItem.join(" ");
-  displayKicks.innerText = letrasChutes.join(", ");
+  letterSort = letrasChutes.sort();
+  displayKicks.innerText = letterSort.join(", ");
   imgForca.src = `./assets/img/game-level-${erros}.png`;
+
+  if (erros === 6) {
+    alerts.innerText = "Cuidado! Você só tem mais 2 tentativas.";
+  }
 
   if (erros >= LIMITE_ERROS) {
     endGame(`VOCÊ PERDEU! A palavra era: ${randonItem}`);
+    btnRetry.classList.remove("hidden");
   } else if (!underscoreItem.includes("_")) {
     endGame("VOCÊ VENCEU! 🎉");
   }
@@ -128,14 +135,9 @@ btnIniciar.addEventListener("click", () => {
   }
 });
 
-// Botão Recomeçar: Volta para o menu
+// Botão Recomeçar
 btnRetry.addEventListener("click", () => {
-  areaJogo.classList.add("hidden");
-  menuInicial.classList.remove("hidden");
-  alerts.innerText = "";
-  document
-    .querySelectorAll('input[name="categoria"]')
-    .forEach(r => (r.checked = false));
+  initGame();
 });
 
 btnReturn.addEventListener("click", () => {
