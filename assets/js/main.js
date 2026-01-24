@@ -62,6 +62,7 @@ function initGame(categoryName) {
 
   updateScreen();
 }
+// to do: adicionar timer para reiniciar o jogo automaticamente após vitória
 
 function updateScreen() {
   categoriaRadios.innerText = selected;
@@ -79,6 +80,8 @@ function updateScreen() {
     btnRetry.classList.remove("hidden");
   } else if (!underscoreItem.includes("_")) {
     endGame("VOCÊ VENCEU! 🎉");
+    // to do: adicionar confete ou animação de vitória
+    // to do: Implementar timer  aqui
   }
 }
 

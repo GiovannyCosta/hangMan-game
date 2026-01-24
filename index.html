@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-    <title>Jogo da Forca</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/animation.css">
+        <link rel="stylesheet" href="./assets/css/menu.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap"
+            rel="stylesheet">
+        <title>Jogo da Forca</title>
+    </head>
 
-<body>
-    <main class="container">
-        <!-- Menu Inicial -->
-        <section id="menu-inicial" class="menu-option">
-            <p>Selecione uma categoria</p>
-            <label for="id-frutas">
-                <input type="radio" name="categoria" id="id-frutas" value="Frutas"> Frutas
-            </label>
-            <label for="id-cidades">
-                <input type="radio" name="categoria" id="id-cidades" value="Cidades"> Cidades
-            </label>
-            <label for="id-paises">
-                <input type="radio" name="categoria" id="id-paises" value="Paises"> Países
-            </label>
-
-            <button id="startGameBtn">Iniciar Jogo</button>
-        </section>
-        <!-- End - Menu Inicial -->
-
-        <!-- Area do Jogo -->
-        <section id="area-jogo" class="hidden">
-
-            <!-- TO DO: CRIAR ESTILO DO BOTÃO VOLTAR -->
-            <div class="menu-close-game">
-                <p>Categoria: <span id="categoria-selecionada"></span></p>
-                <div class="close-game-button">
-                    <button id="btnCloseGame"><i class="fa-solid fa-x close-icon"></i></button>
-                    <label class="label--btn-close-game">VOLTAR</label>
+    <body>
+        <main class="container">
+            <!-- Menu Inicial -->
+            <section id="menu-inicial" class="menu-option">
+                <p>Selecione uma categoria</p>
+                <div class="menu-option--category">
+                    <label for="id-frutas">
+                        <input type="radio" name="categoria" id="id-frutas"
+                            value="Frutas"> Frutas
+                    </label>
+                    <label for="id-objetos">
+                        <input type="radio" name="categoria" id="id-objetos"
+                            value="Objetos"> Objetos
+                    </label>
+                    <label for="id-cidades">
+                        <input type="radio" name="categoria" id="id-cidades"
+                            value="Cidades"> Cidades
+                    </label>
+                    <label for="id-paises">
+                        <input type="radio" name="categoria" id="id-paises"
+                            value="Paises"> Países
+                    </label>
                 </div>
-            </div>
-            <section class="game-area">
-                <div class="visual-area">
-                    <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem contínua de uma forca">
-                </div>
-
-                <div class="word-area">
-                    <div id="Alerts"></div>
-                    <div id="display" class="word-display"></div>
-
-                    <div class="input-group">
-                        <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
-                        <button id="btnChutar">Chutar</button>
-                        <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
-
-                    </div>
-                </div>
-                <footer class="game-status">
-                    <div class="history">
-                        <h3>Letras chutadas:</h3>
-                        <p id="chutes"></p>
-                    </div>
-                </footer>
+                <button id="startGameBtn">Iniciar Jogo</button>
             </section>
-        </section>
-        <!-- End - Area do Jogo -->
-    </main>
+            <!-- End - Menu Inicial -->
 
-    <!-- <script src="./assets/js/dataModes.js"></script> -->
-    <script src="./assets/js/main.js"></script>
-</body>
+            <!-- Area do Jogo -->
+            <section id="area-jogo" class="hidden">
+
+                <!-- TO DO: CRIAR ESTILO DO BOTÃO VOLTAR -->
+                <div class="menu-close-game">
+                    <p>Categoria: <span id="categoria-selecionada"></span></p>
+                    <div class="close-game-button">
+                        <button id="btnCloseGame"><i
+                                class="fa-solid fa-x close-icon"></i></button>
+                        <label class="label--btn-close-game">VOLTAR</label>
+                    </div>
+                </div>
+                <section class="game-area">
+                    <div class="visual-area">
+                        <img id="imagem" src="./assets/img/game-level-0.png"
+                            alt="Imagem contínua de uma forca">
+                    </div>
+
+                    <div class="word-area">
+                        <div id="Alerts"></div>
+                        <div id="display" class="word-display"></div>
+
+                        <div class="input-group">
+                            <input type="text" id="enterLetter" placeholder="?"
+                                maxlength="1" autocomplete="off">
+                            <button id="btnChutar">Chutar</button>
+                            <button id="btnRecomecar" class="hidden">Jogar
+                                Novamente</button>
+
+                        </div>
+                    </div>
+                    <footer class="game-status">
+                        <div class="history">
+                            <h3>Letras chutadas:</h3>
+                            <p id="chutes"></p>
+                        </div>
+                    </footer>
+                </section>
+            </section>
+            <!-- End - Area do Jogo -->
+        </main>
+
+        <!-- <script src="./assets/js/dataModes.js"></script> -->
+        <script src="./assets/js/main.js"></script>
+    </body>
 
 </html>
