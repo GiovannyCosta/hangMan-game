@@ -1,53 +1,71 @@
 const listas = {
   Frutas: ["BANANA", "MELANCIA", "MORANGO", "UVA", "MANGA"],
   Cidades: ["MANAUS", "CURITIBA", "SAO PAULO", "FORTALEZA"],
-  Paises: ["BRASIL", "ARGENTINA", "JAPAO", "FRANCA"],
+  Paises: ["BRASIL", "ARGENTINA", "JAPAO", "FRANCA", "ALEMANHA"],
+  Objetos: ["CADEIRA", "MESA", "LAPIS", "CELULAR", "CADERNO", "GARRAFA"],
 };
 
 // Elementos DOM
 const alerts = document.getElementById("Alerts");
+const menuAlerts = document.getElementById("menuAlerts");
 const display = document.querySelector("#display");
 const btnKick = document.getElementById("btnChutar");
 const displayKicks = document.getElementById("chutes");
 const enterLetter = document.getElementById("enterLetter");
 const imgForca = document.getElementById("imagem");
 const btnRetry = document.getElementById("btnRecomecar");
-// novos itens para menu de game
 const areaJogo = document.getElementById("area-jogo");
 const btnIniciar = document.getElementById("startGameBtn");
 const menuInicial = document.getElementById("menu-inicial");
+const categoriaRadios = document.getElementById("categoria-selecionada");
+const btnReturn = document.getElementById("btnCloseGame");
 
-// Variáveis de controle
-let letrasChutes, erros, randonItem, underscoreItem;
+// Variaveis de controle
+let letrasChutes;
+let erros;
+let randonItem;
+let underscoreItem;
+let selected;
+
 const LIMITE_ERROS = 8;
+
+function clearAlerts() {
+  alerts.innerText = "";
+  menuAlerts.innerText = "";
+}
+
+function normalizeLetter(letter) {
+  return letter
+    .toUpperCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
 
 function initGame(categoryName) {
   letrasChutes = [];
   erros = 0;
 
-  // Corrigido: Se categoryName não existir, busca o valor do rádio marcado
-  const selected =
-    categoryName ||
-    document.querySelector('input[name="categoria"]:checked')?.value;
+  selected = categoryName || document.querySelector('input[name="categoria"]:checked')?.value;
   const categoryList = listas[selected];
 
-  // Corrigido: Verifica se a lista existe antes de prosseguir
   if (!categoryList) {
     areaJogo.classList.add("hidden");
     menuInicial.classList.remove("hidden");
+    menuAlerts.innerText = "Por favor, selecione uma categoria.";
     return;
   }
 
-  randonItem =
-    categoryList[Math.floor(Math.random() * categoryList.length)].toUpperCase();
-  underscoreItem = Array(randonItem.length).fill("_");
+  randonItem = categoryList[Math.floor(Math.random() * categoryList.length)].toUpperCase();
+  underscoreItem = randonItem.split("").map((char) => (char === " " ? " " : "_"));
 
-  // Reset visual e transição de telas
-  alerts.innerText = "";
+  clearAlerts();
   displayKicks.innerText = "";
-  btnRetry.style.display = "none";
-  enterLetter.style.display = "block";
-  btnKick.style.display = "block";
+
+  btnRetry.classList.add("hidden");
+  enterLetter.classList.remove("hidden");
+  btnKick.classList.remove("hidden");
+
   btnKick.disabled = false;
   enterLetter.disabled = false;
 
@@ -59,30 +77,37 @@ function initGame(categoryName) {
 }
 
 function updateScreen() {
+  categoriaRadios.innerText = selected;
   display.innerText = underscoreItem.join(" ");
-  displayKicks.innerText = letrasChutes.join(", ");
+
+  const letterSort = [...letrasChutes].sort();
+  displayKicks.innerText = letterSort.join(", ");
   imgForca.src = `./assets/img/game-level-${erros}.png`;
 
+  if (erros === LIMITE_ERROS - 2) {
+    alerts.innerText = "Cuidado! Voce so tem mais 2 tentativas.";
+  }
+
   if (erros >= LIMITE_ERROS) {
-    endGame(`VOCÊ PERDEU! A palavra era: ${randonItem}`);
+    endGame(`VOCE PERDEU! A palavra era: ${randonItem}`);
   } else if (!underscoreItem.includes("_")) {
-    endGame("VOCÊ VENCEU! 🎉");
+    endGame("VOCE VENCEU!");
   }
 }
 
-btnKick.addEventListener("click", e => {
+btnKick.addEventListener("click", (e) => {
   e.preventDefault();
-  let letterValue = enterLetter.value.toUpperCase().trim();
+  const letterValue = normalizeLetter(enterLetter.value);
 
-  if (!letterValue.match(/[a-zà-ùç]/i) || letterValue === "") {
-    alerts.innerText = "Insira uma letra válida.";
+  if (!/^[A-Z]$/.test(letterValue)) {
+    alerts.innerText = "Insira uma letra valida.";
     enterLetter.value = "";
-    enterLetter.focus(); // Corrigido: foco no elemento de input
+    enterLetter.focus();
     return;
   }
 
   if (letrasChutes.includes(letterValue)) {
-    alerts.innerText = "Você já chutou esta letra.";
+    alerts.innerText = "Voce ja chutou esta letra.";
     enterLetter.value = "";
     enterLetter.focus();
     return;
@@ -106,36 +131,39 @@ btnKick.addEventListener("click", e => {
 
 function endGame(msg) {
   alerts.innerText = msg;
-  enterLetter.style.display = "none";
-  btnKick.style.display = "none";
-  btnRetry.style.display = "block";
+  enterLetter.disabled = true;
+  btnKick.disabled = true;
+  enterLetter.classList.add("hidden");
+  btnKick.classList.add("hidden");
+  btnRetry.classList.remove("hidden");
 }
 
-// Botão Iniciar: Passa explicitamente o valor selecionado
 btnIniciar.addEventListener("click", () => {
-  const selected = document.querySelector(
-    'input[name="categoria"]:checked',
-  )?.value;
-  if (selected) {
-    initGame(selected);
+  const selectedCategory = document.querySelector('input[name="categoria"]:checked')?.value;
+
+  if (selectedCategory) {
+    initGame(selectedCategory);
   } else {
-    alerts.innerText = "Por favor, selecione uma categoria.";
+    menuAlerts.innerText = "Por favor, selecione uma categoria.";
   }
 });
 
-// Botão Recomeçar: Volta para o menu
 btnRetry.addEventListener("click", () => {
+  initGame(selected);
+});
+
+btnReturn.addEventListener("click", () => {
   areaJogo.classList.add("hidden");
   menuInicial.classList.remove("hidden");
-  alerts.innerText = "";
-  document
-    .querySelectorAll('input[name="categoria"]')
-    .forEach(r => (r.checked = false));
+  clearAlerts();
+  document.querySelectorAll('input[name="categoria"]').forEach((radio) => {
+    radio.checked = false;
+  });
 });
 
-enterLetter.addEventListener("keypress", e => {
-  if (e.key === "Enter") btnKick.click();
+enterLetter.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    btnKick.click();
+  }
 });
-
-// Inicia apenas se houver seleção, caso contrário mantém o menu
-window.onload = () => initGame();

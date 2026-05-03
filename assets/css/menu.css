@@ -1,0 +1,90 @@
+/* MENU INICIAL */
+.menu-option {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  padding: 10px;
+}
+
+.menu-option--category {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.menu-option p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-metal);
+  border: none;
+}
+
+.menu-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.menu-option label {
+  background-color: var(--text-metal);
+  color: var(--text-white);
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 0 var(--bg-ink-black);
+  border: var(--borda-padrao);
+  animation: fadeUp 0.5s ease backwards;
+}
+
+.menu-option label:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+
+.menu-option label:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+
+.menu-option label:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+.menu-option label:nth-of-type(4) {
+  animation-delay: 0.9s;
+}
+
+.menu-option #startGameBtn {
+  animation-delay: 1s;
+}
+
+#startGameBtn {
+  animation: fadeUp 0.5s ease backwards;
+}
+
+.menu-option label:hover {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 var(--bg-ink-black);
+}
+
+.menu-option label:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--bg-ink-black);
+}
+
+.menu-option label:has(input:checked) {
+  background-color: var(--primary-pink);
+  color: var(--text-white);
+  box-shadow: 0 6px 0 #c94f5a;
+  border-color: var(--secondary-green);
+  transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .menu-option--category {
+    grid-template-columns: 1fr;
+  }
+}

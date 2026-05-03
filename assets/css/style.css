@@ -1,254 +1,304 @@
-/* Configurações Gerais - Reset */
+/* VARIAVEIS DE COR & CONFIGURACOES GERAIS */
+:root {
+  --bg-ink-black: #091016;
+  --bg-white: #f0f4ef;
+  --text-black: #08090a;
+  --text-white: #f0f4ef;
+  --text-metal: #343a40;
+  --primary-pink: #fc6471;
+  --secondary-green: #98ce00;
+  --shadow-ink: 0 18px 40px rgba(8, 9, 10, 0.25);
+  --borda-padrao: 3px solid transparent;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: #333;
+  background:
+    radial-gradient(circle at top left, rgba(252, 100, 113, 0.22), transparent 30%),
+    linear-gradient(135deg, var(--bg-ink-black), var(--text-metal));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-black);
+  padding: 20px;
 }
 
 .container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 960px;
-    text-align: center;
+  position: relative;
+  background-color: var(--bg-white);
+  padding: 4rem;
+  border-radius: 18px;
+  box-shadow: var(--shadow-ink);
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  border: 4px solid rgba(240, 244, 239, 0.35);
 }
 
-/* Cabeçalho */
-.header h1 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    color: #2c3e50;
+h1,
+h2 {
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--bg-ink-black);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 0 rgba(252, 100, 113, 0.18);
 }
 
-.category-wrapper {
-    margin-bottom: 2rem;
+button#startGameBtn,
+button#btnRecomecar {
+  padding: 20px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--secondary-green);
+  color: var(--text-black);
+  box-shadow: 0 8px 0 #6e9600;
 }
 
-select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
+button:hover:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 #6e9600;
 }
 
-.container:has(#btnChutar:hover, #enterLetter:hover) #typeItems:invalid {
-
-    border: 1px solid #c20426;
-    outline: none;
+button#btnChutar:hover:not(:disabled) {
+  box-shadow: 0 4px 0 #c94f5a;
 }
 
-/* Ajuste para imagens grandes e centralização */
+button:active:not(:disabled) {
+  transform: translateY(8px);
+  box-shadow: none;
+}
+
+button:disabled {
+  background-color: #c9d0c7;
+  color: var(--text-metal);
+  box-shadow: 0 8px 0 #9da69a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 .visual-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 .visual-area img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-    display: block;
-    border-radius: 10px;
-}
-
-/* Palavra e Input */
-.word-display {
-    font-size: 2.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 0.8rem;
-    margin-bottom: 2rem;
-    min-height: 3rem;
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 2rem;
-}
-
-#enterLetter {
-    width: 90px;
-    height: 90px;
-    text-align: center;
-    font-size: 2rem;
-    border: 2px solid #3498db;
-    border-radius: 8px;
-    text-transform: uppercase;
-}
-
-button {
-    padding: 0 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-.container:has(#typeItems:invalid) #btnChutar,
-.container:has(#typeItems:invalid) #enterLetter {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* Status e Chutes */
-.game-status {
-    border-top: 2px solid #eee;
-    padding-top: 1.5rem;
-}
-
-.history h3 {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-bottom: 5px;
-}
-
-#chutes {
-    font-weight: bold;
-    color: #e74c3c;
-    letter-spacing: 3px;
-}
-
-.message-display {
-    margin: 1rem 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Classe utilitária para esconder itens */
-.hidden {
-    display: none !important;
-}
-
-#btnRecomecar {
-    background-color: #2ecc71;
-    padding: 20px 20px;
-    width: 100%;
-}
-
-#btnRecomecar:hover {
-    background-color: #27ae60;
+  width: min(100%, 320px);
+  max-height: 320px;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 8px rgba(8, 9, 10, 0.2));
+  transition: transform 0.3s;
 }
 
 #display {
-    font-size: min(2rem, 8vw);
-    display: flex;
+  font-size: min(3.5rem, 10vw);
+  font-family: "Nunito", monospace;
+  font-weight: 900;
+  color: var(--text-black);
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 2px 2px 0 rgba(252, 100, 113, 0.18);
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+#enterLetter {
+  width: 80px;
+  height: 80px;
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  border: 4px solid var(--text-metal);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--primary-pink);
+  outline: none;
+  text-transform: uppercase;
+  box-shadow: inset 0 4px 6px rgba(8, 9, 10, 0.12);
+  transition: all 0.3s;
+  animation: fadeUp 0.5s ease backwards;
+}
+
+#enterLetter:focus {
+  border-color: var(--secondary-green);
+  transform: scale(1.05);
+}
+
+button#btnChutar {
+  animation: fadeUp 0.5s ease backwards;
+  width: 100%;
+  height: 80px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--primary-pink);
+  color: var(--text-white);
+  box-shadow: 0 8px 0 #c94f5a;
+  border: none;
+  margin-bottom: 8px;
+  border-radius: 10px;
+}
+
+#Alerts,
+#menuAlerts {
+  min-height: 50px;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  color: var(--primary-pink);
+  background-color: rgba(252, 100, 113, 0.12);
+  border-radius: 8px;
+  transition: opacity 0.3s;
+}
+
+#Alerts:empty,
+#menuAlerts:empty {
+  visibility: hidden;
+  background-color: transparent;
+  border: none;
+}
+
+.game-status {
+  border-top: 2px solid rgba(52, 58, 64, 0.15);
+  padding-top: 1.5rem;
+}
+
+.game-status h3 {
+  font-size: 1.2rem;
+  color: var(--text-metal);
+  margin-bottom: 10px;
+}
+
+#chutes {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--primary-pink);
+  letter-spacing: 3px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.menu-close-game {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.close-game-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  position: relative;
+  width: fit-content;
+}
+
+#btnCloseGame {
+  color: var(--text-white);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 2;
+  background-color: var(--primary-pink);
+}
+
+.close-game-button #btnCloseGame:hover {
+  transform: translateY(1px);
+  box-shadow: none;
+  background-color: var(--bg-ink-black);
+}
+
+.label--btn-close-game {
+  background-color: var(--text-metal);
+  color: var(--text-white);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-right: 12px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.close-game-button:has(#btnCloseGame:hover) .label--btn-close-game {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-close-game p {
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--text-black);
+  border-radius: 8px;
+  transition: opacity 0.3s;
+  font-size: 1.1rem;
+}
+
+.menu-close-game span {
+  margin: 0 5px;
+  color: var(--primary-pink) !important;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .menu-close-game {
+    align-items: flex-start;
+  }
+
+  .input-group {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-}
+  }
 
-#word-alerts {
-    position: fixed;
-    height: 30px;
-    color: #ffa629;
-}
-
-#Alerts {
-    min-height: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #e67e22;
-    font-weight: bold;
-    display: block;
-}
-
-
-/* Teste de funcionalidade nova: Menu game option*/
-
-.menu-option {
+  button#btnChutar,
+  button#btnRecomecar {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-}
-
-.menu-option p {
-    font-weight: bold;
-    border-bottom: 1px solid #000;
-    padding: 4px;
-}
-
-.menu-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.menu-option label {
-    background-color: #3498db;
-
-    margin: 8px;
-    width: 200px;
-    padding: 20px 20px;
-    border-radius: 8px;
-}
-
-.menu-option label:hover {
-    background-color: #2980b9;
-}
-
-
-.menu-option label:has(input:checked) {
-    background-color: #ffa629;
-    border: 2px solid #fff;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.menu-option #startGameBtn {
-    padding: 20px 20px;
-    width: 90%;
-    margin: 20px;
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
-    cursor: not-allowed;
-    background-color: #95a5a6;
-    /* Cor cinza (desativado) */
-    opacity: 0.5;
-    transition: 0.3s;
-}
-
-.menu-option:has(input:checked) #startGameBtn {
-    background-color: #f1c40f;
-    /* Cor amarela (ativo) */
-    color: #2c3e50;
-    opacity: 1;
-    cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    border: 2px solid #fff;
-
-}
-
-.menu-option:has(input:checked) #startGameBtn:hover {
-    background-color: #ffa629;
-    transform: translateY(-2px);
+  }
 }
