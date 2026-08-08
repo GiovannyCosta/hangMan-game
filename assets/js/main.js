@@ -46,7 +46,8 @@ function finishGame(won){
   state.ended=true;clearInterval(timerId);
   if(won){state.score+=calculateScore(state.word,state.errors,state.seconds,state.limit);state.streak++;playAudio(state.streak>=3?"#sound-achievement":"#sound-perfect",.62);}else{state.streak=0;tone(120,.55,"sawtooth",.05);ui.app.classList.add("screen-shake");setTimeout(()=>ui.app.classList.remove("screen-shake"),600);}
   renderWord(true);renderStatus();$("#result-symbol").textContent=won?"W":"X";$("#result-kicker").textContent=won?"PALAVRA DECIFRADA":"TENTATIVAS ESGOTADAS";$("#result-title").textContent=won?"VOCÊ VENCEU":"FIM DE JOGO";$("#result-word").textContent=state.word;$("#result-time").textContent=formatTime(state.seconds);$("#result-errors").textContent=state.errors;$("#result-score").textContent=state.score;ui.next.firstChild.textContent=state.mode==="streak"&&won?"PRÓXIMA PALAVRA ":"JOGAR NOVAMENTE ";ui.modal.querySelector(".result-card").className=`result-card ${won?"win":"loss"}`;
-  setTimeout(()=>{ui.modal.hidden=false;requestAnimationFrame(()=>ui.modal.classList.add("show"));},450);
+  const resultDelay = won ? 450 : 900;
+  setTimeout(()=>{ui.modal.hidden=false;requestAnimationFrame(()=>ui.modal.classList.add("show"));},resultDelay);
 }
 function guess(rawLetter){
   if(state.locked||state.ended||ui.game.classList.contains("hidden"))return;
