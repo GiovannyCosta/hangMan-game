@@ -1,79 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/animation.css">
-    <link rel="stylesheet" href="./assets/css/menu.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-    <title>Jogo da Forca</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b14"><meta name="description" content="Última Letra — uma arena moderna de jogo da forca.">
+  <link rel="stylesheet" href="./assets/css/style.css"><title>Última Letra — Hangman Arena</title>
 </head>
-
 <body>
-    <main class="container">
-        <section id="menu-inicial" class="menu-option">
-            <p>Selecione uma categoria</p>
-            <div class="menu-option--category">
-                <label for="id-frutas">
-                    <input type="radio" name="categoria" id="id-frutas" value="Frutas"> Frutas
-                </label>
-                <label for="id-objetos">
-                    <input type="radio" name="categoria" id="id-objetos" value="Objetos"> Objetos
-                </label>
-                <label for="id-cidades">
-                    <input type="radio" name="categoria" id="id-cidades" value="Cidades"> Cidades
-                </label>
-                <label for="id-paises">
-                    <input type="radio" name="categoria" id="id-paises" value="Paises"> Pa&iacute;ses
-                </label>
-            </div>
-            <div id="menuAlerts"></div>
-            <button id="startGameBtn">Iniciar Jogo</button>
-        </section>
+  <div class="loader" id="loader" aria-label="Carregando o jogo"><div class="loader-word" aria-hidden="true"><span>Ú</span><span>L</span><span>T</span><span>I</span><span>M</span><span>A</span></div><strong>PREPARANDO AS PALAVRAS</strong><div class="loader-track"><i></i></div></div>
+  <main class="app" id="app">
+    <header class="topbar"><a class="brand" href="#" aria-label="Última Letra"><i></i> ÚLTIMA <span>LETRA</span></a><div class="session"><span>SESSÃO</span><strong id="session-number">01</strong></div><button class="icon-button" id="sound-toggle" type="button" aria-label="Desativar som">SOM</button></header>
 
-        <section id="area-jogo" class="hidden">
-            <div class="menu-close-game">
-                <p>Categoria: <span id="categoria-selecionada"></span></p>
-                <div class="close-game-button">
-                    <button id="btnCloseGame" aria-label="Voltar ao menu">
-                        <i class="fa-solid fa-x close-icon"></i>
-                    </button>
-                    <label class="label--btn-close-game">VOLTAR</label>
-                </div>
-            </div>
+    <section class="setup" id="setup" aria-labelledby="setup-title">
+      <div class="setup-copy"><p class="eyebrow">HANGMAN ARENA</p><h1 id="setup-title">SUA ÚLTIMA<br><em>LETRA?</em></h1><p>Escolha a missão, revele a palavra e sobreviva aos erros.</p></div>
+      <div class="setup-panel">
+        <fieldset><legend>01. CATEGORIA</legend><div class="option-grid categories" id="categories">
+          <button type="button" data-category="Frutas"><span>FR</span><strong>Frutas</strong><small>Sabores conhecidos</small></button><button type="button" data-category="Objetos"><span>OB</span><strong>Objetos</strong><small>Coisas do cotidiano</small></button><button type="button" data-category="Cidades"><span>CI</span><strong>Cidades</strong><small>Lugares do Brasil</small></button><button type="button" data-category="Paises"><span>PA</span><strong>Países</strong><small>Volta ao mundo</small></button><button type="button" data-category="Tecnologia"><span>TE</span><strong>Tecnologia</strong><small>Mundo digital</small></button><button type="button" data-category="Aleatorio"><span>?</span><strong>Aleatória</strong><small>Todas misturadas</small></button>
+        </div></fieldset>
+        <div class="setup-row"><fieldset><legend>02. DIFICULDADE</legend><div class="segmented" id="difficulties"><button type="button" data-difficulty="relax">RELAX <small>8 erros</small></button><button class="active" type="button" data-difficulty="arena">ARENA <small>6 erros</small></button><button type="button" data-difficulty="extreme">EXTREMO <small>4 erros</small></button></div></fieldset><fieldset><legend>03. MODO</legend><div class="segmented" id="modes"><button class="active" type="button" data-mode="classic">CLÁSSICO <small>Uma palavra</small></button><button type="button" data-mode="streak">SEQUÊNCIA <small>Jogue sem parar</small></button></div></fieldset></div>
+        <p class="setup-alert" id="setup-alert" aria-live="polite"></p><button class="primary-button" id="start-button" type="button">ENTRAR NA ARENA <span>→</span></button>
+      </div>
+    </section>
 
-            <section class="game-area">
-                <div class="visual-area">
-                    <img id="imagem" src="./assets/img/game-level-0.png" alt="Imagem continua de uma forca">
-                </div>
+    <section class="game hidden" id="game" aria-labelledby="game-title">
+      <div class="game-head"><button class="back-button" id="back-button" type="button">← MENU</button><div><span>CATEGORIA</span><strong id="category-label">—</strong></div><div><span>TEMPO</span><strong id="timer">00:00</strong></div><div><span>PONTOS</span><strong id="score">000</strong></div><div><span>SEQUÊNCIA</span><strong id="streak">00</strong></div></div>
+      <div class="game-layout">
+        <aside class="gallows-card"><div class="danger-head"><span>RISCO DE FALHA</span><strong id="attempts-label">0 / 6</strong></div><div class="danger-track"><i id="danger-progress"></i></div><img id="hangman-image" src="./assets/img/game-level-0.png" alt="Forca sem erros"><div class="lives" id="lives" aria-label="Tentativas restantes"></div></aside>
+        <section class="word-card"><p class="eyebrow">DECIFRE A PALAVRA</p><h2 id="game-title" class="sr-only">Palavra secreta</h2><div class="word-display" id="word-display" aria-live="polite"></div><div class="clue"><span>DICA</span><p id="clue-text">A dica aparecerá aqui.</p><button id="hint-button" type="button">REVELAR LETRA <small>CUSTA 1 ERRO</small></button></div><p class="feedback" id="feedback" aria-live="assertive">ESCOLHA UMA LETRA PARA COMEÇAR</p><div class="keyboard" id="keyboard" aria-label="Teclado virtual"></div><p class="keyboard-tip">Use o teclado físico ou clique nas letras. <kbd>ESC</kbd> volta ao menu.</p></section>
+      </div>
+      <footer class="game-footer"><div><span>LETRAS USADAS</span><p id="used-letters">NENHUMA</p></div><div class="footer-actions"><a href="https://github.com/GiovannyCosta/hangMan-game" target="_blank" rel="noopener noreferrer">&lt;/&gt; REPOSITÓRIO ↗</a><button id="restart-button" type="button">↻ NOVA PALAVRA</button></div></footer>
+    </section>
+  </main>
 
-                <div class="word-area">
-                    <div id="Alerts"></div>
-                    <div id="display" class="word-display"></div>
-
-                    <div class="input-group">
-                        <input type="text" id="enterLetter" placeholder="?" maxlength="1" autocomplete="off">
-                        <button id="btnChutar">Chutar</button>
-                        <button id="btnRecomecar" class="hidden">Jogar Novamente</button>
-                    </div>
-                </div>
-
-                <footer class="game-status">
-                    <div class="history">
-                        <h3>Letras chutadas:</h3>
-                        <p id="chutes"></p>
-                    </div>
-                </footer>
-            </section>
-        </section>
-    </main>
-
-    <script defer src="./assets/js/main.js"></script>
+  <section class="result-modal" id="result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden><div class="result-card"><span class="result-symbol" id="result-symbol">W</span><p id="result-kicker">PALAVRA DECIFRADA</p><h2 id="result-title">VOCÊ VENCEU</h2><p>A palavra era <strong id="result-word"></strong></p><div class="result-stats"><div><span>TEMPO</span><strong id="result-time">00:00</strong></div><div><span>ERROS</span><strong id="result-errors">0</strong></div><div><span>PONTOS</span><strong id="result-score">0</strong></div></div><button class="primary-button" id="next-button" type="button">JOGAR NOVAMENTE <span>→</span></button><button class="text-button" id="modal-menu-button" type="button">VOLTAR AO MENU</button></div></section>
+  <audio id="sound-correct" src="./assets/sounds/correct-sound.mp3" preload="auto"></audio>
+  <audio id="sound-perfect" src="./assets/sounds/perfect.mp3" preload="auto"></audio>
+  <audio id="sound-achievement" src="./assets/sounds/Achievement.mp3" preload="auto"></audio>
+  <script src="./assets/js/game-core.js"></script><script src="./assets/js/main.js"></script>
 </body>
-
 </html>
