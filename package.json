@@ -1,0 +1,9 @@
+{
+  "name": "ultima-letra-hangman-arena",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check assets/js/game-core.js && node --check assets/js/main.js && node --test"
+  }
+}
