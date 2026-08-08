@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&display=swap");
 :root {
   --bg: #080b14;
   --panel: #111725;
@@ -1021,5 +1021,384 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tema editorial: papel, madeira e tinta substituem a estética digital. */
+:root {
+  --bg: #362719;
+  --panel: #efe2c7;
+  --panel2: #e4d2b1;
+  --line: #8e7655;
+  --white: #241d16;
+  --muted: #75644f;
+  --lime: #c89832;
+  --amber: #b66b2c;
+  --pink: #963629;
+  --red: #922d25;
+  --violet: #315748;
+}
+body {
+  color: var(--white);
+  background: #362719;
+  font-family: "Special Elite", Georgia, serif;
+}
+.app {
+  background:
+    radial-gradient(
+      circle at 16% 28%,
+      rgba(148, 102, 46, 0.13),
+      transparent 24%
+    ),
+    linear-gradient(rgba(73, 51, 30, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(73, 51, 30, 0.045) 1px, transparent 1px),
+    #e9dcc0;
+  background-size:
+    auto,
+    36px 36px,
+    36px 36px;
+  color: #241d16;
+}
+.app:before,
+.app:after {
+  border-color: rgba(91, 62, 34, 0.16);
+}
+.topbar {
+  border-color: #9c8462;
+}
+.brand {
+  color: #241d16;
+  font-family: "Rye", Georgia, serif;
+}
+.brand i {
+  background: #963629;
+  box-shadow: none;
+}
+.brand span {
+  color: #963629;
+}
+.session span,
+.game-head span {
+  color: #75644f;
+}
+.session strong {
+  font-family: "Rye", Georgia, serif;
+}
+.icon-button {
+  border-color: #8e7655;
+  color: #493b2c;
+  background: #dbc9a8;
+}
+.icon-button:hover {
+  color: #fff;
+  border-color: #963629;
+  background: #963629;
+}
+.setup-copy .eyebrow,
+.word-card > .eyebrow {
+  color: #315748;
+}
+.setup-copy h1 {
+  font-family: "Rye", Georgia, serif;
+  color: #241d16;
+  letter-spacing: -0.035em;
+}
+.setup-copy h1 em {
+  color: #963629;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.setup-copy > p:last-child {
+  color: #645440;
+}
+.setup-panel {
+  border: 1px solid #846c4d;
+  background: #f2e7d0;
+  box-shadow:
+    9px 10px 0 rgba(70, 47, 27, 0.2),
+    0 22px 45px rgba(56, 38, 22, 0.15);
+  transform: rotate(0.25deg);
+}
+.setup legend {
+  color: #705d46;
+}
+.option-grid button,
+.segmented button {
+  border-color: #a58d69;
+  color: #2a2118;
+  background: #e7d7b8;
+}
+.option-grid button > span {
+  border-color: #876e4d;
+  color: #963629;
+  background: #f4ead7;
+}
+.option-grid small,
+.segmented button small {
+  color: #75644f;
+}
+.option-grid button:hover,
+.option-grid button.active {
+  border-color: #963629;
+  background: #f6ead1;
+  box-shadow: 3px 4px 0 rgba(82, 54, 30, 0.22);
+  transform: translate(-1px, -2px);
+}
+.option-grid button.active:after {
+  background: #963629;
+  box-shadow: none;
+}
+.segmented {
+  border-color: #8e7655;
+  background: #d3bd96;
+}
+.segmented button.active {
+  color: #fff;
+  background: #315748;
+}
+.segmented button.active small {
+  color: #d8e2dc;
+}
+.setup-alert {
+  color: #963629;
+}
+.primary-button {
+  color: #fff;
+  background: #963629;
+  box-shadow: 4px 5px 0 #5f211a;
+  font-family: "Special Elite", serif;
+}
+.primary-button:hover {
+  box-shadow: 2px 3px 0 #5f211a;
+  transform: translate(2px, 2px);
+}
+.game-head {
+  border-color: #80694b;
+  background: #e6d4b3;
+  box-shadow: 5px 6px 0 rgba(68, 45, 26, 0.18);
+}
+.game-head > div {
+  border-color: #9a8260;
+}
+.game-head strong {
+  font-family: "Rye", Georgia, serif;
+}
+.game-head > div:nth-of-type(3) strong {
+  color: #315748;
+}
+.back-button {
+  color: #ede2cb;
+  background: #493625;
+}
+.back-button:hover {
+  background: #963629;
+}
+.gallows-card,
+.word-card {
+  border-color: #8b7352;
+  background: #f0e3c9;
+  box-shadow: 5px 6px 0 rgba(67, 45, 27, 0.16);
+}
+.danger-head {
+  color: #685744;
+}
+.danger-head strong {
+  color: #963629;
+}
+.danger-track {
+  background: #cab692;
+}
+.danger-track i {
+  background: #963629;
+  box-shadow: none;
+}
+.gallows-card img {
+  filter: sepia(0.55) saturate(0.7) contrast(1.12)
+    drop-shadow(4px 6px 4px rgba(63, 42, 22, 0.25));
+}
+.lives i {
+  border-color: #8b7352;
+}
+.lives i.safe {
+  border-color: #315748;
+  background: #315748;
+  box-shadow: none;
+}
+.lives i.lost {
+  border-color: #b29573;
+  background: #d1bda0;
+}
+.letter-slot {
+  border-color: #8e7655;
+  color: #315748;
+  font-family: "Rye", Georgia, serif;
+  text-shadow: none;
+}
+.letter-slot.revealed {
+  border-color: #315748;
+}
+.clue {
+  border-color: #9b815e;
+  background: #e4d1ad;
+}
+.clue > span {
+  color: #963629;
+}
+.clue p {
+  color: #3f3327;
+}
+.clue button {
+  border-color: #8f7045;
+  color: #5f3b19;
+  background: #d7b97f;
+}
+.clue button small {
+  color: #735a37;
+}
+.clue button:hover:not(:disabled) {
+  border-color: #963629;
+  background: #e2c68f;
+}
+.feedback {
+  color: #685744;
+  background: #ddc9a6;
+}
+.feedback.success {
+  color: #315748;
+}
+.feedback.danger {
+  color: #963629;
+}
+.feedback.warning {
+  color: #8a541e;
+}
+.keyboard button {
+  border-color: #9a8260;
+  color: #2a2118;
+  background: #e1cfad;
+  box-shadow: 0 3px 0 #9a8260;
+  font-family: "Special Elite", serif;
+}
+.keyboard button:hover:not(:disabled) {
+  color: #fff;
+  border-color: #315748;
+  background: #315748;
+  box-shadow: 0 1px 0 #1f382f;
+}
+.keyboard button.used {
+  color: #89775e;
+  background: #cdb994;
+  box-shadow: none;
+}
+.keyboard-tip {
+  color: #76644d;
+}
+.keyboard-tip kbd {
+  border-color: #8e7655;
+  color: #493b2c;
+  background: #d7c39f;
+}
+.game-footer {
+  border-color: #9a8260;
+}
+.game-footer > div > span {
+  color: #705d46;
+}
+.game-footer p {
+  color: #963629;
+}
+.footer-actions a,
+.footer-actions button {
+  border-color: #8e7655;
+  color: #4a3b2b;
+  background: #decbaa;
+}
+.footer-actions a {
+  color: #315748;
+  border-color: #315748;
+}
+.footer-actions a:hover,
+.footer-actions button:hover {
+  color: #fff;
+  border-color: #963629;
+  background: #963629;
+}
+.loader {
+  color: #efe3ca;
+  background: radial-gradient(circle, #503b27, #2c2016);
+}
+.loader-word span {
+  border-color: #9b7c52;
+  color: #2a2118;
+  background: #dfccaa;
+  font-family: "Rye", Georgia, serif;
+  box-shadow: 3px 4px 0 #1d150e;
+}
+.loader-track {
+  background: #1e160f;
+}
+.loader-track i {
+  background: #963629;
+}
+.result-modal {
+  background: rgba(40, 28, 18, 0.86);
+}
+.result-card {
+  border-color: #806847;
+  background: #efe1c5;
+  box-shadow: 8px 9px 0 rgba(28, 19, 12, 0.36);
+  color: #241d16;
+}
+.result-card.loss {
+  border-color: #963629;
+  background: #ead8ba;
+}
+.result-symbol {
+  border-color: #315748;
+  color: #315748;
+  font-family: "Rye", Georgia, serif;
+}
+.loss .result-symbol {
+  color: #963629;
+  border-color: #963629;
+}
+.result-card > p:first-of-type {
+  color: #315748;
+}
+.loss > p:first-of-type {
+  color: #963629;
+}
+.result-card h2 {
+  font-family: "Rye", Georgia, serif;
+}
+.result-card > p {
+  color: #75644f;
+}
+.result-card > p strong {
+  color: #241d16;
+}
+.result-stats {
+  border-color: #9b8260;
+}
+.result-stats div {
+  border-color: #9b8260;
+}
+.result-stats span {
+  color: #75644f;
+}
+.result-stats strong {
+  font-family: "Rye", Georgia, serif;
+}
+.text-button {
+  color: #6c5943;
+}
+.text-button:hover {
+  color: #963629;
+}
+@keyframes loader-key {
+  to {
+    transform: translateY(-8px) rotate(-1deg);
+    border-color: #d4b477;
+    box-shadow: 5px 7px 0 #1d150e;
   }
 }
