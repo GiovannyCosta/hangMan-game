@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/img/readme/ultima-letra-banner.png" alt="Última Letra — Hangman Arena" width="100%">
+  <img src="./assets/img/readme/ultima-letra-banner-v2.png" alt="Última Letra — Hangman Arena" width="100%">
 </p>
 
 <p align="center">
@@ -7,7 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/GiovannyCosta/hangMan-game"><strong>Repositório</strong></a>
+  <a href="https://ultimaletra.netlify.app/"><strong>Jogar agora</strong></a>
+  ·
+  <a href="https://github.com/GiovannyCosta/hangMan-game">Repositório</a>
 </p>
 
 <p align="center">
@@ -43,7 +45,7 @@ Os nove desenhos disponíveis da forca são distribuídos proporcionalmente em t
 - Letras duplicadas são bloqueadas sem consumir tentativa.
 - Proteção contra clique duplo, tecla mantida e excesso de entradas.
 - Cronômetro, pontuação, sequência e histórico de letras.
-- Sons produzidos com Web Audio, sem arquivos externos.
+- Efeitos sonoros com arquivos locais e tons complementares produzidos pela Web Audio API.
 - Loading temático e animações para acerto, erro, vitória e derrota.
 - Layout responsivo para celular, tablet e desktop.
 - Suporte à preferência de redução de movimento.
@@ -92,6 +94,12 @@ tests/
   game-core.test.js      Testes unitários
 ```
 
+## Publicação
+
+O projeto está disponível no Netlify:
+
+**https://ultimaletra.netlify.app/**
+
 <p align="center">
-    Desenvolvido com ✂️🪨📄 e dedicação  por <strong>Giovanny Costa  | Arghata</strong>.
+    Desenvolvido com letras, pistas e dedicação por <strong>Giovanny Costa | Arghata</strong>.
 </p>
