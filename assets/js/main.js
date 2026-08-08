@@ -222,10 +222,11 @@ function finishGame(won) {
     state.mode === "streak" && won ? "PRÓXIMA PALAVRA " : "JOGAR NOVAMENTE ";
   ui.modal.querySelector(".result-card").className =
     `result-card ${won ? "win" : "loss"}`;
+  const resultDelay = won ? 450 : 900;
   setTimeout(() => {
     ui.modal.hidden = false;
     requestAnimationFrame(() => ui.modal.classList.add("show"));
-  }, 450);
+  }, resultDelay);
 }
 function guess(rawLetter) {
   if (state.locked || state.ended || ui.game.classList.contains("hidden"))
